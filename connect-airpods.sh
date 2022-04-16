@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Connect AirPods
+# @raycast.mode silent
+
+# Optional parameters:
+# @raycast.icon 🤖
+
+AIR_PODS_ADDRESS=28-f0-33-88-27-d1 # Your AirPods MAC address
+AIR_PODS_NAME="Takuro’s AirPods Pro" # Your AirPods name
+
+/usr/local/bin/bluetoothconnector -c "$AIR_PODS_ADDRESS"
+for ((i=0 ; i<10 ; i++))
+do
+    if [ "Connected" == $(/usr/local/bin/bluetoothconnector -s "$AIR_PODS_ADDRESS") ]; then
+        sleep 1
+        /usr/local/bin/SwitchAudioSource -s "$AIR_PODS_NAME"
+        sleep 1
+        say -v samantha Connected
+        break
+    fi
+    sleep 1
+done
+
