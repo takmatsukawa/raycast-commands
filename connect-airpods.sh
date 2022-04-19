@@ -11,12 +11,12 @@
 AIR_PODS_ADDRESS=28-f0-33-88-27-d1 # Your AirPods MAC address
 AIR_PODS_NAME="Takuro’s AirPods Pro" # Your AirPods name
 
-/opt/homebrew/bin/bluetoothconnector -c "$AIR_PODS_ADDRESS"
+bluetoothconnector -c "$AIR_PODS_ADDRESS"
 for ((i=0 ; i<10 ; i++))
 do
-    if [ "Connected" == $(/opt/homebrew/bin/bluetoothconnector -s "$AIR_PODS_ADDRESS") ]; then
+    if [ "Connected" == $(bluetoothconnector -s "$AIR_PODS_ADDRESS") ]; then
         sleep 1
-        /opt/homebrew/bin/SwitchAudioSource -s "$AIR_PODS_NAME"
+        SwitchAudioSource -s "$AIR_PODS_NAME"
         sleep 1
         say -v samantha Connected
         break
