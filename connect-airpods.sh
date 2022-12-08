@@ -18,7 +18,7 @@ do
         sleep 1
         SwitchAudioSource -s "$AIR_PODS_NAME"
         sleep 1
-        say -v samantha Connected
+        say Connected
         break
     fi
     sleep 1
